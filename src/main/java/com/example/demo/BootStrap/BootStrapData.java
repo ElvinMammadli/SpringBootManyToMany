@@ -5,8 +5,9 @@ import com.example.demo.Model.Book;
 import com.example.demo.Repository.AuthorRepository;
 import com.example.demo.Repository.BookRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class BootStrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
@@ -23,5 +24,21 @@ public class BootStrapData implements CommandLineRunner {
         Book dee = new Book("Find him","123123");
         Elvin.getBooks().add(dee);
         dee.getAuthors().add(Elvin);
+
+        bookRepository.save(dee);
+        authorRepository.save(Elvin);
+
+
+        Author Ulvi = new Author("Ulvi","Shavatli");
+        Book bre = new Book("Criminal roman","111111");
+        Ulvi.getBooks().add(bre);
+        bre.getAuthors().add(Ulvi);
+
+        bookRepository.save(bre);
+        authorRepository.save(Ulvi);
+
+        System.out.println("Started in BootStrap");
+        System.out.println("Number of Books "+bookRepository.count());
+
     }
 }
